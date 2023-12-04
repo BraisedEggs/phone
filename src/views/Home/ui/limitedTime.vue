@@ -4,7 +4,7 @@
  * @Author: 高月飞
  * @Date: 2023-11-30 15:31:06
  * @LastEditors: 高月飞
- * @LastEditTime: 2023-12-01 19:44:48
+ * @LastEditTime: 2023-12-04 14:26:52
 -->
 <template>
     <div class="card">
@@ -46,11 +46,9 @@ const nowdata = formatCurrentTime();
 onMounted(async () => {
     let limiteRet = await useLimiteTimeApi(active.value);
     limitdData.value = limiteRet.data.limitedtime;
-    console.log(limiteRet)
     limitdData.value.map(item => {
         const timdata = convertToTimeFormat(item.time)
-        console.log(timdata)
-        if (timdata == "04:53") {
+        if (timdata == nowdata) {
             describe.value = "抢购中"
         } else {
             describe.value = "即将抢购"

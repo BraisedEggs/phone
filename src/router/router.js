@@ -4,7 +4,7 @@
  * @Author: 高月飞
  * @Date: 2023-11-27 20:01:22
  * @LastEditors: 高月飞
- * @LastEditTime: 2023-12-01 20:50:09
+ * @LastEditTime: 2023-12-04 14:27:41
  */
 /* 
 自动引入routes的路由
@@ -22,7 +22,6 @@ for (let key in Route) {
   }
 }
 
-console.log(children)
 
 const routes = [
   {

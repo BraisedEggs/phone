@@ -18,12 +18,17 @@
 
 <script setup>
 import { showDialog } from 'vant';
+import { useRouter } from 'vue-router';
+const router = useRouter()
 const wechat = async () => {
-    showDialog({
-        message: '功能再开发中',
-    }).then(() => {
+    // showDialog({
+    //     message: '功能再开发中',
+    // }).then(() => {
 
-    });
+    // });
+    const weChatOAuthURL = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&redirect_uri=UrlEncode（URL)&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
+    window.location.href = weChatOAuthURL;
+
 }
 const txqq = async () => {
     showDialog({

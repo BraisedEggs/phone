@@ -4,10 +4,10 @@
  * @Author: 高月飞
  * @Date: 2023-11-29 14:28:26
  * @LastEditors: 高月飞
- * @LastEditTime: 2023-12-04 10:38:53
+ * @LastEditTime: 2023-12-04 14:01:43
 -->
 <template>
-    <div>
+    <div class="remote">
         <div class="topBtn">
             <div type="" @click="routerBnt('recommend')">推荐</div>
             <div type="" @click="routerBnt('focuson')">关注</div>
@@ -30,6 +30,9 @@ const routerBnt = (value) => {
 </script>
 
 <style lang="scss" scoped>
+.remote{
+margin-bottom: 100px;
+}
 .topBtn {
     display: flex;
     justify-content: center;

@@ -4,19 +4,18 @@
  * @Author: 高月飞
  * @Date: 2023-11-29 14:27:45
  * @LastEditors: 高月飞
- * @LastEditTime: 2023-12-01 19:21:18
+ * @LastEditTime: 2023-12-04 14:44:06
 -->
 <template>
-    <div class="homePage">
+    <div class="homePage" v-if="ispage">
         <!-- 固定搜索框 -->
         <van-sticky>
             <searchVue />
         </van-sticky>
-
         <!-- 轮播图 -->
         <carouselVue :carousel="carousel" v-if="carousel" />
         <!-- 课程 -->
-        <courseVue :sourceList="sourceList" />
+        <courseVue :sourceList="sourceList" @routerData="routerData" />
         <div class="gap"></div>
         <NewAreaVue />
         <div class="gap"></div>
@@ -26,10 +25,12 @@
         <div class="gap"></div>
         <sourseLiveVue :sourceData="sourcelive" />
         <div class="gap"></div>
-        <WonderfulCourseVue />
+
+        <!-- <WonderfulCourseVue /> -->
         <div class="gap"></div>
         <div class="gapbtn"></div>
     </div>
+    <router-view  v-else @goback="goback" />
 </template>
 
 <script setup>
@@ -44,6 +45,7 @@ import deepCopy from '@/tools/deepCopy.js'
 import limitedTimeVue from "./ui/limitedTime.vue";
 import sourseLiveVue from "./ui/courselive.vue";
 import WonderfulCourseVue from "./ui/wonderfulCourse.vue";
+import { useRouter } from "vue-router";
 
 // 获取推荐课程的数据
 const recommed = ref()
@@ -67,7 +69,17 @@ onMounted(async () => {
     sourcelive.value = deepCopy(liveRet.data)
     sourceList.value = deepCopy(sourceRet.data)
 })
-
+//路由跳转换页面
+const ispage = ref(true)
+const router = useRouter()
+const routerData = (value) => {
+    ispage.value = false
+    router.replace("/home/" + value)
+}
+const goback = () => {
+    ispage.value = true
+    router.replace("/home")
+}
 </script>
 
 <style lang="scss" scoped>
@@ -108,7 +120,13 @@ onMounted(async () => {
 
 }
 
-.gapbtn {
-    height: 400px;
-}
+/* .otherPage {
+
+    widows: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+} */
 </style>

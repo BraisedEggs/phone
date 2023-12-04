@@ -11,6 +11,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@vant/area-data": "^1.5.1",
     "axios": "^1.6.2",
     "mockjs": "^1.1.0",
     "pinia": "^2.1.7",

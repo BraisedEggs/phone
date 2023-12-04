@@ -23,9 +23,10 @@ import children from "@/router/router.js"
 import { useRouter } from "vue-router";
 const router = useRouter()
 const props = defineProps(['sourceList'])
-console.log(children)
+
+const emit = defineEmits(['routerData'])
 const enterInterface = (value) => {
-    router.replace("/home/k2")
+    emit('routerData', value);
 }
 </script>
 

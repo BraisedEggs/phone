@@ -4,7 +4,7 @@
  * @Author: 高月飞
  * @Date: 2023-11-27 20:08:10
  * @LastEditors: 高月飞
- * @LastEditTime: 2023-12-01 20:49:53
+ * @LastEditTime: 2023-12-04 14:05:09
  */
 /* 
 主页路由
@@ -22,8 +22,8 @@ const routes = [
         },
         children: [
             {
-                path: '/home/k2',
-
+                path: 'k2',
+                name: 'k2',
                 component: () => import('@/views/k2/index.vue'),
             },
 

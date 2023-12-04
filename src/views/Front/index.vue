@@ -4,11 +4,14 @@
  * @Author: 高月飞
  * @Date: 2023-11-27 19:56:55
  * @LastEditors: 高月飞
- * @LastEditTime: 2023-11-29 14:17:09
+ * @LastEditTime: 2023-12-04 14:01:17
 -->
 <template>
-  <router-view />
-  <van-tabbar v-model="active" router>
+  <div class="content-wrapper">
+    <router-view />
+  </div>
+
+  <van-tabbar v-model="active" router class="fixed-tabbar">
     <van-tabbar-item icon="home-o" to="/home">首页</van-tabbar-item>
     <van-tabbar-item icon="eye-o" to="/discover">发现</van-tabbar-item>
     <van-tabbar-item icon="fire-o" to="live">直播</van-tabbar-item>
@@ -24,8 +27,15 @@ const active = ref(0);
 </script>
 
 <style lang="scss" scoped>
-.van-tabbar {
-  overflow: hidden;
+.content-wrapper {
+  padding-bottom: 200px; // Adjust this value based on the actual height of your tabbar
+}
+
+.fixed-tabbar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 999; // Adjust z-index as needed to ensure it's above other content
   margin-top: 100px;
 }
 </style>
