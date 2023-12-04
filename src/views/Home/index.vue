@@ -4,7 +4,7 @@
  * @Author: 高月飞
  * @Date: 2023-11-29 14:27:45
  * @LastEditors: 高月飞
- * @LastEditTime: 2023-12-04 14:44:06
+ * @LastEditTime: 2023-12-04 17:32:41
 -->
 <template>
     <div class="homePage" v-if="ispage">
@@ -74,6 +74,7 @@ const ispage = ref(true)
 const router = useRouter()
 const routerData = (value) => {
     ispage.value = false
+    console.log(value)
     router.replace("/home/" + value)
 }
 const goback = () => {
