@@ -4,7 +4,7 @@
  * @Author: 高月飞
  * @Date: 2023-12-01 14:37:20
  * @LastEditors: 高月飞
- * @LastEditTime: 2023-12-04 17:16:11
+ * @LastEditTime: 2023-12-05 13:43:52
 -->
 <template>
     <div>
@@ -31,16 +31,18 @@
             </template>
         </van-nav-bar>
         <!-- 课程 -->
-        <van-tabs v-model:active="activeName">
-            <van-tab title="推荐" name="a">内容 1</van-tab>
-            <van-tab title="数学" name="b">内容 2</van-tab>
-            <van-tab title="语文" name="c">内容 3</van-tab>
-            <van-tab title="英语" name="d">内容 4</van-tab>
-            <van-tab title="物理" name="e">内容 5</van-tab>
-            <van-tab title="化学" name="f">内容 6</van-tab>
-            <van-tab title="生物" name="g">内容 7</van-tab>
+        <van-tabs v-model:active="activeName" @click="clickHandler">
+            <van-tab v-for="(tab, index) in tabs" :key="index" :title="tab.title" :name="tab.name">
+                <template v-for="item, key in source" :key="key" class="sourceitem">
+                    <BarTwoCard :CardData="item" @click="goTovideo(item.sourceid)" />
+                </template>
+                <template v-for="value, key in livesource" :key="key">
+                    <BarOneCard :livesourceData="value" @click="goTovideo(value.liveid)" />
+                </template>
+            </van-tab>
         </van-tabs>
-        <!-- 内容 -->
+
+
     </div>
     <van-popup v-model:show="showCenter">
         <GradeVue @savegrade="savegrade" />
@@ -52,10 +54,12 @@
 
 <script setup>
 
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
 import areaVue from "./ui/area.vue";
 import GradeVue from "./ui/Grade.vue";
+import { useStudyRecommendApi } from "@/services/k2.js"
+import deepCopy from '@/tools/deepCopy.js'
 
 // 返回上一级
 const router = useRouter()
@@ -96,6 +100,70 @@ const sendcityitem = (value) => {
 // 搜索
 // todo:这是搜索框没有写
 const searchValue = ref()
+
+
+
+// 默认选中推荐
+const activeName = ref('recommend')
+const tabs = ref([
+    { title: '推荐', name: 'recommend' },
+    { title: '数学', name: 'math' },
+    { title: '语文', name: 'Chinese' },
+    { title: '英语', name: 'English' },
+    { title: '物理', name: 'physics' },
+    { title: '化学', name: 'Chemical' },
+    { title: '生物', name: 'biology' },
+])
+const livesource = ref()
+const source = ref()
+onMounted(async () => {
+    obtainData("recommend")
+})
+const clickHandler = (value) => {
+    switch (value) {
+        case 'recommend':
+            obtainData("recommend")
+            break;
+        case 'math':
+            obtainData("math")
+            break;
+        case 'Chinese':
+            obtainData("Chinese")
+            break;
+        case 'English':
+            obtainData("English")
+            break;
+        case 'physics':
+            obtainData("physics")
+            break;
+        case 'Chemical':
+            obtainData("Chemical")
+            break;
+        case 'biology':
+            obtainData("biology")
+            break;
+        default:
+            obtainData("obtainData")
+            break;
+    }
+}
+//获取数据
+const obtainData = async () => {
+    livesource.value = null;
+    source.value = null;
+    let recommendRet = await useStudyRecommendApi("recommend")
+    livesource.value = deepCopy(recommendRet.data.recommend.livesource)
+    source.value = deepCopy(recommendRet.data.recommend.source)
+}
+// 点击到达视频页面
+const goTovideo = (value) => {
+    // todo:这儿有问题点击会再次加载
+
+    router.replace("/home/video/")
+}
+
+
+
 </script>
 
 <style lang="scss" scoped></style>

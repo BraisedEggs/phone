@@ -19,6 +19,8 @@ import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 // Vant
 import Vant from 'vant';
 import 'vant/lib/index.css';
+// video的样式
+import "video.js/dist/video-js.css";
 // 全局组件
 import registerGlobComp from "@/components/index"
 import { Lazyload } from 'vant';

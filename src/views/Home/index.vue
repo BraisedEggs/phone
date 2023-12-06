@@ -4,7 +4,7 @@
  * @Author: 高月飞
  * @Date: 2023-11-29 14:27:45
  * @LastEditors: 高月飞
- * @LastEditTime: 2023-12-04 17:32:41
+ * @LastEditTime: 2023-12-05 09:08:12
 -->
 <template>
     <div class="homePage" v-if="ispage">
@@ -30,7 +30,7 @@
         <div class="gap"></div>
         <div class="gapbtn"></div>
     </div>
-    <router-view  v-else @goback="goback" />
+    <router-view v-else @goback="goback" />
 </template>
 
 <script setup>
@@ -72,15 +72,17 @@ onMounted(async () => {
 //路由跳转换页面
 const ispage = ref(true)
 const router = useRouter()
+const emit = defineEmits(['closeFront'])
 const routerData = (value) => {
     ispage.value = false
-    console.log(value)
     router.replace("/home/" + value)
+    // todo:这儿有问题是想吧下面的菜单隐藏
+    emit('closeFront', false)
 }
 const goback = () => {
     ispage.value = true
     router.replace("/home")
-}
+} 
 </script>
 
 <style lang="scss" scoped>

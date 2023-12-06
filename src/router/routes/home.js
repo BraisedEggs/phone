@@ -4,7 +4,7 @@
  * @Author: 高月飞
  * @Date: 2023-11-27 20:08:10
  * @LastEditors: 高月飞
- * @LastEditTime: 2023-12-04 14:05:09
+ * @LastEditTime: 2023-12-05 13:42:59
  */
 /* 
 主页路由
@@ -21,6 +21,7 @@ const routes = [
             icon: "icon-hetongguanli",
         },
         children: [
+            // 八大专栏
             {
                 path: 'k2',
                 name: 'k2',
@@ -97,6 +98,28 @@ const routes = [
                 },
             },
 
+            // 视频页面
+            {
+                path: 'video',
+                name: 'video',
+                component: () => import('@/views/video/index.vue'),
+                meta: {
+                    menu: '视频页面',
+                    // TODO: icon有问题
+                    icon: "icon-hetongguanli",
+                },
+            },
+            // 视频页面
+            {
+                path: 'chat',
+                name: 'chat',
+                component: () => import('@/views/Chat/index.vue'),
+                meta: {
+                    menu: '聊天页面',
+                    // TODO: icon有问题
+                    icon: "icon-hetongguanli",
+                },
+            },
         ],
 
     }
