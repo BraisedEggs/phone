@@ -42,7 +42,7 @@ const onClickLeft = () => {
 }
 // 按下enter
 const onEnter = () => {
-    sendMessage()
+        sendMessage()
 }
 // 点击发送
 const sendData = ref()
