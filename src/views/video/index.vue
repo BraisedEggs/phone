@@ -4,7 +4,7 @@
  * @Author: 高月飞
  * @Date: 2023-12-05 11:53:20
  * @LastEditors: 高月飞
- * @LastEditTime: 2023-12-06 10:35:45
+ * @LastEditTime: 2023-12-07 08:31:52
 -->
 <template>
     <div>
@@ -94,7 +94,7 @@ const setChatHandler = () => {
 // 马上学习
 // todo:马上学习
 const syudying = () => {
-    console.log('马上学习')
+    router.replace("/home/pay")
 }
 </script>
   

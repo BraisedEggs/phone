@@ -4,7 +4,7 @@
  * @Author: 高月飞
  * @Date: 2023-11-27 20:01:22
  * @LastEditors: 高月飞
- * @LastEditTime: 2023-12-04 14:27:41
+ * @LastEditTime: 2023-12-07 15:19:41
  */
 /* 
 自动引入routes的路由
@@ -35,9 +35,10 @@ const routes = [
     name: 'login',
     component: () => import('@/views/Login/index.vue'),
     meta: {
+      nologin: true,
       menu: "",
       icon: ""
-    },
+    }
   },
   {
     path: '/front',

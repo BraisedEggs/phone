@@ -20,6 +20,7 @@
     "vant": "^4.8.0",
     "vite-plugin-mock": "^2.9.8",
     "vue": "^3.3.4",
+    "vue-qrcode-reader": "^5.4.1",
     "vue-router": "^4.2.5"
   },
   "devDependencies": {

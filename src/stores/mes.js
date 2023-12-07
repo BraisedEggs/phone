@@ -31,6 +31,15 @@ const useLoginStore = defineStore('pas', {
     SETPASSWORDINFO(data) {
       this.pasinfo = data
     },
+    SETLOGOUTINFO() {
+      this.pasinfo = {
+        id: 1,
+        username: '',
+        phone: "",
+        token: '',
+        roleid: 0
+      }
+    },
     async USEPPASSWORDCTION(loginData) {
       let ret = await useLoginPasswordApi(loginData)
       if (ret.code === 200) {

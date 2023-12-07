@@ -1,3 +1,11 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: 高月飞
+ * @Date: 2023-11-29 15:31:20
+ * @LastEditors: 高月飞
+ * @LastEditTime: 2023-12-07 14:15:05
+ */
 
 
 import TopCard from './Card/topCard/index'
@@ -9,7 +17,8 @@ import BarTwoCard from './Card/study/twoCard/index'
 import Player from './VideoPlay/index'
 import CourseIntroduction from './source/CourseIntroduction/index'
 import CourseCatalog from './source/CourseCatalog/index'
-import CourseEvaluation from './sourcE/CourseEvaluation/index'
+import CourseEvaluation from './source/CourseEvaluation/index'
+import QRCode from './Qrcode/QRCode/index'
 export default (app) => {
     app.component('TopCard', TopCard)
     app.component('leftCard', leftCard)
@@ -21,4 +30,5 @@ export default (app) => {
     app.component('CourseIntroduction', CourseIntroduction)
     app.component('CourseCatalog', CourseCatalog)
     app.component('CourseEvaluation', CourseEvaluation)
+    app.component('QRCode', QRCode)
 }

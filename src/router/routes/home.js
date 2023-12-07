@@ -120,6 +120,39 @@ const routes = [
                     icon: "icon-hetongguanli",
                 },
             },
+            // 支付
+            {
+                path: 'pay',
+                name: 'pay',
+                component: () => import('@/views/Pay/index.vue'),
+                meta: {
+                    menu: '支付页面',
+                    // TODO: icon有问题
+                    icon: "icon-hetongguanli",
+                },
+            },
+            // 支付成功
+            {
+                path: 'paysuccess',
+                name: 'paysuccess',
+                component: () => import('@/views/PaySuccess/index.vue'),
+                meta: {
+                    menu: '支付成功',
+                    // TODO: icon有问题
+                    icon: "icon-hetongguanli",
+                },
+            },
+            // 支付失败
+            {
+                path: 'payerror',
+                name: 'payerror',
+                component: () => import('@/views/PayError/index.vue'),
+                meta: {
+                    menu: '支付失败',
+                    // TODO: icon有问题
+                    icon: "icon-hetongguanli",
+                },
+            },
         ],
 
     }
